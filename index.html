@@ -8,10 +8,25 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
+        <script src="app.js"></script>
     </head>
     <body>
-        <h1>Avengers Character Search</h1>
-        <button id="searchButton">Search</button>
-        <script src="app.js"></script>
+        <div class="header">
+            <h1>Avengers Character Search</h1>
+        </div>
+        <!-- <div class="search"> -->
+        <form id="searchForm">        
+            <div class="label">
+                <label for="searchInput">Search by Full Name or Alias</label>
+            </div>
+            <div class="mainForm">
+                <input type="text" id="searchInput" name="searchInput" placeholder="e.g. Captain America or Steve Rogers">
+                <button id="searchButton">Search</button>
+            </div>
+        </form>
+        <!-- </div>  -->
+        <h2>Result</h2>
+        <div class="result"></div> 
+        
     </body>
 </html>

@@ -1,17 +1,75 @@
 body {
+    margin: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    min-width: 900px;
 }
 
+.header {
+    background-color: teal;
+    margin: auto;
+    padding: 40px;
+}
 h1 {
-    color: #333;
+    text-transform: uppercase;
+    color: white;
+}
+form { 
+    padding: 2em 8em;
+}
+.label {
+    text-align: left;
+    padding: 20px 0px;
 }
 
+.mainForm {
+    justify-content: space-between;
+    display: flex;
+}
+#searchInput {
+    text-align: left;
+    padding: 20px 30px;
+    width: 70%
+}
 button {
-    padding: 10px 20px;
+    /* width: 20%; */
+    float: right;
+    /* text-align: center; */
+    padding: 22px 40px;
+    border-radius: 6px;
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
 }
+
+h2 {
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    margin: 0 5.5em;
+    padding: 1em 0;
+}
+.result {
+    margin-left: 8em;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.not-found {
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.result > h3 {
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+
+h4 {
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+

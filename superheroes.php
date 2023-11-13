@@ -63,10 +63,36 @@ $superheroes = [
   ], 
 ];
 
-?>
+//Check for search query
+$searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+if ($searchQuery) {
+    //Filter superheros
+    $filteredHeroes =  array_filter($superheroes, function ($superhero) use($searchQuery){
+        return stripos($superhero["name"], $searchQuery) !== false || stripos($superhero["alias"], $searchQuery) !== false;
+    });
+    //If found, display info or message if not
+    if (!empty($filteredHeroes)) {
+        $foundHero = reset($filteredHeroes);
+?>
+        <h3><?=$foundHero['alias']; ?></h3>
+        <h4>A.K.A <?=$foundHero['name']; ?></h4>
+        <p><?=$foundHero['biography']; ?></p>
+<?php
+    } else {
+        echo "<p class='not-found'>Superhero not found</p>";
+    }
+} else {
+    //Displays list of all heroes if no query is found
+
+?>
+    <ul>
+    <?php foreach ($superheroes as $superhero): ?>
+        <li><?= $superhero['alias']; ?></li>
+    <?php endforeach; ?>
+    </ul>
+
+<?php
+}
+
+?>

@@ -1,20 +1,44 @@
-//Add event listener to the search button
-document.getElementById("searchButton").addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function() {
 
-    //Create XMLHttpRequest object and open a GET request for php
-    const req = new XMLHttpRequest();
-    req.open("GET", "superheroes.php", true);
+    const form = document.getElementById('searchForm');
+    // const btn = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
 
-    //Set onload event handler
-    req.onload = function() {
-        //If request is successfull
-        if (req.status === 200) {
-            //Get response text
-            const avengersList = req.responseText;   
-            //Display list
-            alert(avengersList);
-        }
-    };
-    //Send request
-    req.send();
+    //Add event listener to the form submission
+    form.addEventListener('submit', (event) =>{
+        event.preventDefault(); //Prevent default form submit 
+
+        //Saintize input for increased security
+        const saniQuery = santizeInput(searchInput.value);
+
+        //Create XMLHttpRequest object and open a GET request for php
+        const req = new XMLHttpRequest();
+        const link = saniQuery ? `superheroes.php?query=${saniQuery}` : "superheroes.php";
+        req.open("GET", link, true);
+
+        //Set onload event handler
+        req.onload = function() {
+            //If request is successfull
+            if (req.status === 200) {
+                //Get response text
+                const response = req.responseText;
+                //Get .result div 
+                const results = document.querySelector('.result');
+                
+                //Display result
+                results.innerHTML = response;
+
+                // alert(avengersList);
+            }
+        };
+        //Send request
+        req.send();
     });
+
+    //Function to sanitize user input
+    function santizeInput(input){
+        function santizeInput(input) {
+            return input.replace(/[^\w\s'&,-]/gi, '').trim();
+        }
+    }
+});
