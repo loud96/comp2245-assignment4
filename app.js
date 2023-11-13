@@ -36,9 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     //Function to sanitize user input
-    function santizeInput(input){
-        function santizeInput(input) {
-            return input.replace(/[^\w\s'&,-]/gi, '').trim();
-        }
+    function santizeInput(input) {
+        return input.replace(/[^\w\s'&,-]/gi, '').trim();
     }
 });
