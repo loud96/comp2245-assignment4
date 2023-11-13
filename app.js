@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener('submit', (event) =>{
         event.preventDefault(); //Prevent default form submit 
 
-        //Saintize input for increased security
+        //Sanitize input for increased security
         const saniQuery = santizeInput(searchInput.value);
 
         //Create XMLHttpRequest object and open a GET request for php
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
         req.send();
     });
 
-    //Function to sanitize user input
+    //Function to sanitize user input - Alphanumeric and whitespace only
     function santizeInput(input) {
-        return input.replace(/[^\w\s'&,-]/gi, '').trim();
+        return input.replace(/[^a-zA-Z0-9\s]/g, '').trim();
     }
 });
